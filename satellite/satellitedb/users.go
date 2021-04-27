@@ -54,8 +54,8 @@ func (users *users) Insert(ctx context.Context, user *console.User) (_ *console.
 	}
 
 	optional := dbx.User_Create_Fields{
-		ShortName:      dbx.User_ShortName(user.ShortName),
-		IsProfessional: dbx.User_IsProfessional(user.IsProfessional),
+		ShortName:        dbx.User_ShortName(user.ShortName),
+		IsProfessional:   dbx.User_IsProfessional(user.IsProfessional),
 	}
 	if !user.PartnerID.IsZero() {
 		optional.PartnerId = dbx.User_PartnerId(user.PartnerID[:])
@@ -68,6 +68,7 @@ func (users *users) Insert(ctx context.Context, user *console.User) (_ *console.
 		optional.CompanyName = dbx.User_CompanyName(user.CompanyName)
 		optional.WorkingOn = dbx.User_WorkingOn(user.WorkingOn)
 		optional.EmployeeCount = dbx.User_EmployeeCount(user.EmployeeCount)
+        optional.HaveSalesContact = dbx.User_HaveSalesContact(user.HaveSalesContact)
 	}
 
 	createdUser, err := users.db.Create_User(ctx,
@@ -150,14 +151,15 @@ func userFromDBX(ctx context.Context, user *dbx.User) (_ *console.User, err erro
 	}
 
 	result := console.User{
-		ID:             id,
-		FullName:       user.FullName,
-		Email:          user.Email,
-		PasswordHash:   user.PasswordHash,
-		Status:         console.UserStatus(user.Status),
-		CreatedAt:      user.CreatedAt,
-		ProjectLimit:   user.ProjectLimit,
-		IsProfessional: user.IsProfessional,
+		ID:               id,
+		FullName:         user.FullName,
+		Email:            user.Email,
+		PasswordHash:     user.PasswordHash,
+		Status:           console.UserStatus(user.Status),
+		CreatedAt:        user.CreatedAt,
+		ProjectLimit:     user.ProjectLimit,
+		IsProfessional:   user.IsProfessional,
+		HaveSalesContact: user.HaveSalesContact,
 	}
 
 	if user.PartnerId != nil {
