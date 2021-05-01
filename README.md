@@ -98,10 +98,10 @@ Use Github to open a pull request!
 
 ### A Note about Versioning
 
-While we are practicing [semantic versioning](https://semver.org/) for our client
-libraries such as [uplink](https://github.com/storj/uplink), we are *not* practicing
-semantic versioning in this repo, as we do not intend for it to be used via
-[Go modules](https://blog.golang.org/using-go-modules). We may have
+While we are practicing [semantic versioning](https://semver.org/) for our client 
+libraries such as [uplink](https://github.com/storj/uplink), we are *not* practicing 
+semantic versioning in this repo, as we do not intend for it to be used via 
+[Go modules](https://blog.golang.org/using-go-modules). We may have 
 backwards-incompatible changes between minor and patch releases in this repo.
 
 # Start using Storj
@@ -110,8 +110,26 @@ Our wiki has [documentation and tutorials](https://github.com/storj/storj/wiki).
 Check out these three tutorials:
 
  * [Using the Storj Test Network](https://github.com/storj/storj/wiki/Test-network)
+   > 1. mingw32-make install-sim <br/>
+   > 2. storj-sim network setup --postgres=postgres://[user]:[password]@[addr][:port]/[dbname]?sslmode=disable <br/>
+   > 3. storj-sim network run <br/>
+   > ※ storj-sim network destroy : network setup reset*
+   
  * [Using the Uplink CLI](https://github.com/storj/storj/wiki/Uplink-CLI)
+   > 1. uplink setup <br/>
+   > 2. storj-sim network env is infomation <br/>
+   >   1. SATELLITE_0_ID = NodeID
+   >   2. SATELLITE_0_ADDR = NodeIP and NodePORT
+   >   3. GATEWAY_0_API_KEY = API Key
+   
  * [Using the S3 Gateway](https://github.com/storj/storj/wiki/S3-Gateway)
+   > 1. gateway setup <br/>
+   > 2. storj-sim network env is infomation <br/>
+   >   1. SATELLITE_0_ID = NodeID
+   >   2. SATELLITE_0_ADDR = NodeIP and NodePORT
+   >   3. GATEWAY_0_API_KEY = API Key
+   > 3. gateway run
+
 
 # License
 
@@ -127,5 +145,5 @@ code under Apache v2, or other licenses in the future.
 # Support
 
 If you have any questions or suggestions please reach out to us on
-[our community forum](https://forum.storj.io/) or file a ticket at
-https://support.storj.io/.
+[our community forum](https://forum.storj.io/) or
+email us at support@tardigrade.io.
